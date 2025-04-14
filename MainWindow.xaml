@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DXFactor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="App" 
+        Height="450" Width="800" 
+        MinHeight="200" MinWidth="400" 
+        WindowStartupLocation="CenterScreen">
+    
+    <StackPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Content="Option" />
+                <Button Content="Help" />
+                <Button Content="About" />
+            </ToolBar>
+        </ToolBarTray>        
+        <DockPanel>
+            <Label Width="80">Src Folder:</Label>
+            <TextBox Width="Auto" VerticalAlignment="Center" Margin="0,0,10,0">some location</TextBox>
+        </DockPanel>
+        
+        <DockPanel>
+            <Label Width="80">Dst Folder:</Label>
+            <TextBox Width="Auto" VerticalAlignment="Center" Margin="0,0,10,0">some location</TextBox>            
+        </DockPanel>
+        
+        <ListView>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Status" Width="100"></GridViewColumn>
+                    <GridViewColumn Header="Before" Width="100"></GridViewColumn>
+                    <GridViewColumn Header="After" Width="100"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </StackPanel>
 
-    </Grid>
 </Window>
