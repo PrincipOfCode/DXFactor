@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,24 +18,67 @@ namespace DXFactor
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+
+            tbScrFld.Text = String.Empty;
+            tbDstFld.Text = String.Empty;
+            
+
         }
+
 
         private void ToolBar_Loaded(object sender, RoutedEventArgs e)
         {
-            ToolBar toolBar = sender as ToolBar;
-            var overflowGrid = toolBar.Template.FindName("OverflowGrid", toolBar) as FrameworkElement;
-            if (overflowGrid != null)
+            if (sender != null)
             {
-                overflowGrid.Visibility = Visibility.Collapsed;
+                ToolBar toolBar = sender as ToolBar;
+                var overflowGrid = toolBar.Template.FindName("OverflowGrid", toolBar) as FrameworkElement;
+                if (overflowGrid != null)
+                {
+                    overflowGrid.Visibility = Visibility.Collapsed;
+                }
+
+                var mainPanelBorder = toolBar.Template.FindName("MainPanelBorder", toolBar) as FrameworkElement;
+                if (mainPanelBorder != null)
+                {
+                    mainPanelBorder.Margin = new Thickness(0);
+                }
             }
 
-            var mainPanelBorder = toolBar.Template.FindName("MainPanelBorder", toolBar) as FrameworkElement;
-            if (mainPanelBorder != null)
+        }
+
+
+
+        private void btnScrSearch_Click(object sender, RoutedEventArgs e)
+        {
+            var folderDialog = new OpenFolderDialog
             {
-                mainPanelBorder.Margin = new Thickness(0);
+                // Set options here
+                
+
+            };
+
+            if (folderDialog.ShowDialog() == true)
+            {
+                tbScrFld.Text = folderDialog.FolderName;
+            }
+        }
+
+        private void btnDstSearch_Click(object sender, RoutedEventArgs e)
+        {
+            var folderDialog = new OpenFolderDialog
+            {
+                // Set options here
+                InitialDirectory = tbScrFld.Text
+
+            };
+
+            if (folderDialog.ShowDialog() == true)
+            {
+                tbDstFld.Text = folderDialog.FolderName;
             }
         }
     }
