@@ -7,55 +7,78 @@
         mc:Ignorable="d"
         Title="App" 
         MinHeight="330" MinWidth="400" 
-        WindowStartupLocation="CenterScreen" Width="400" Padding="0,0,0,24" Height="330">
+        WindowStartupLocation="CenterScreen" Padding="0,0,0,24" >
 
-    <StackPanel ScrollViewer.VerticalScrollBarVisibility="Disabled">
-        <ToolBarTray DockPanel.Dock="Top" Margin="0,0,0,14">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <ToolBarTray Grid.Row="0" Margin="0,0,0,14">
             <ToolBar ToolBarTray.IsLocked="True" Loaded="ToolBar_Loaded">
                 <Button Content="Option" />
                 <Button Content="Help" />
                 <Button Content="About" />
             </ToolBar>
         </ToolBarTray>
-        <DockPanel>
-            <Label Width="80">Src Folder:</Label>
-            <TextBox Name="tbScrFld" VerticalAlignment="Center" Height="18" HorizontalAlignment="Left" MinWidth="200"/>
-            <Button Name="btnScrSearch" Click="btnScrSearch_Click" Content="🔍" Height="18" Width="18" VerticalAlignment="Center" Margin="0,0,12,0" HorizontalAlignment="Left" />
-        </DockPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition MinHeight="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Vertical">
+                <DockPanel>
+                    <Label Width="80">Src Folder:</Label>
+                    <TextBox Name="tbScrFld" VerticalAlignment="Center" Height="18" HorizontalAlignment="Left" MinWidth="200"/>
+                    <Button Name="btnScrSearch" Click="btnScrSearch_Click" Content="🔍" Height="18" Width="18" VerticalAlignment="Center" Margin="0,0,12,0" HorizontalAlignment="Left" />
+                </DockPanel>
 
-        <DockPanel Margin="0,0,0,14">
-            <Label Width="80">Dst Folder:</Label>
-            <TextBox Name="tbDstFld" VerticalAlignment="Center" Height="18" HorizontalAlignment="Left" MinWidth="200"/>
-            <Button Name="btnDstSearch" Click="btnDstSearch_Click" Content="🔍" Height="18" Width="18" VerticalAlignment="Center" Margin="0,0,12,0" HorizontalAlignment="Left" />
-        </DockPanel>
+                <DockPanel Margin="0,0,0,14">
+                    <Label Width="80">Dst Folder:</Label>
+                    <TextBox Name="tbDstFld" VerticalAlignment="Center" Height="18" HorizontalAlignment="Left" MinWidth="200"/>
+                    <Button Name="btnDstSearch" Click="btnDstSearch_Click" Content="🔍" Height="18" Width="18" VerticalAlignment="Center" Margin="0,0,12,0" HorizontalAlignment="Left" />
+                </DockPanel>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Header="Actions">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,24">
+                            <Label Content="Quantity" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                            <ComboBox MaxWidth="100" Height="18" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" Padding="7,1,7,1">
+                                <ComboBoxItem Content="Multiply" IsSelected="True"/>
+                                <ComboBoxItem Content="Divide"></ComboBoxItem>
+                            </ComboBox>
+                            <TextBox VerticalAlignment="Center" Width="20" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="18">5</TextBox>
+                        </DockPanel>
+                    </StackPanel>
 
-        <DockPanel Margin="0,0,0,24">
-            <Label Content="Quantity"></Label>
-            <ComboBox MaxWidth="100" Height="18" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" Padding="7,1,7,1">
-                <ComboBoxItem Content="Multiply" IsSelected="True"/>
-                <ComboBoxItem Content="Divide"></ComboBoxItem>
-            </ComboBox>
-            <TextBox VerticalAlignment="Center" Width="20" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="18">5</TextBox>
-        </DockPanel>
+                </GroupBox>
+            </Grid>
+            <ListView Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Padding="12,0,12,0" SelectionMode="Single" Margin="7,0,7,24" >
+                <ListView.RenderTransform>
+                    <TransformGroup/>
+                </ListView.RenderTransform>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Status" Width="70"></GridViewColumn>
+                        <GridViewColumn Header="Before" Width="200"></GridViewColumn>
+                        <GridViewColumn Header="After" Width="200"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <DockPanel Grid.Row="3" Margin="0,0,0,14">
+                <Button Content="Clear" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,1,5,1" Margin="14,0,28,0"></Button>
+                <Button Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="5,1,5,1" Margin="28,0,14,0"/>
+            </DockPanel>
+        </Grid>
 
-
-
-        <ListView MaxHeight="500" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Padding="12,0,12,0" SelectionMode="Single" Margin="7,0,7,24" MinHeight="100">
-            <ListView.RenderTransform>
-                <TransformGroup/>
-            </ListView.RenderTransform>
-            <ListView.View>
-                <GridView AllowsColumnReorder="False">
-                    <GridViewColumn Header="Status" Width="70"></GridViewColumn>
-                    <GridViewColumn Header="Before" Width="280"></GridViewColumn>
-                    <GridViewColumn Header="After" Width="280"></GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <DockPanel Margin="0,0,0,14">
-            <Button Content="Clear" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,1,5,1" Margin="14,0,28,0"></Button>
-            <Button Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="5,1,5,1" Margin="28,0,14,0"/>
-        </DockPanel>
-    </StackPanel>
+    </Grid>
 
 </Window>

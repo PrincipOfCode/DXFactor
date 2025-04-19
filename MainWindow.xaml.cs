@@ -72,8 +72,6 @@ namespace DXFactor
             var folderDialog = new OpenFolderDialog
             {
                 // Set options here
-                InitialDirectory = tbScrFld.Text
-
             };
 
             if (folderDialog.ShowDialog() == true)
