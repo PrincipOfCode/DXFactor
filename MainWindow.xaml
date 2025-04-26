@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DXFactor"
+        xmlns:userControls="clr-namespace:DXFactor.View.UserControls"
         mc:Ignorable="d"
         Title="App" 
         MinHeight="330" MinWidth="400" 
@@ -32,14 +32,16 @@
             <StackPanel Grid.Row="0" Orientation="Vertical">
                 <DockPanel>
                     <Label Width="80">Src Folder:</Label>
-                    <TextBox Name="tbScrFld" VerticalAlignment="Center" Height="18" HorizontalAlignment="Left" MinWidth="200"/>
-                    <Button Name="btnScrSearch" Click="btnScrSearch_Click" Content="🔍" Height="18" Width="18" VerticalAlignment="Center" Margin="0,0,12,0" HorizontalAlignment="Left" />
+                    <userControls:ExtendedTextBox Height="24" Placeholder="Edit, Drop or find scr folder.."/>
+                    
+
+
                 </DockPanel>
 
                 <DockPanel Margin="0,0,0,14">
                     <Label Width="80">Dst Folder:</Label>
-                    <TextBox Name="tbDstFld" VerticalAlignment="Center" Height="18" HorizontalAlignment="Left" MinWidth="200"/>
-                    <Button Name="btnDstSearch" Click="btnDstSearch_Click" Content="🔍" Height="18" Width="18" VerticalAlignment="Center" Margin="0,0,12,0" HorizontalAlignment="Left" />
+                    <userControls:ExtendedTextBox Height="24" Placeholder="Edit, Drop or find dst folder.."/>
+
                 </DockPanel>
             </StackPanel>
             <Grid Grid.Row="1">

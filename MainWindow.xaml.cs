@@ -22,10 +22,7 @@ namespace DXFactor
         public MainWindow()
         {
             InitializeComponent();
-
-            tbScrFld.Text = String.Empty;
-            tbDstFld.Text = String.Empty;
-            
+           
 
         }
 
@@ -52,20 +49,6 @@ namespace DXFactor
 
 
 
-        private void btnScrSearch_Click(object sender, RoutedEventArgs e)
-        {
-            var folderDialog = new OpenFolderDialog
-            {
-                // Set options here
-                
-
-            };
-
-            if (folderDialog.ShowDialog() == true)
-            {
-                tbScrFld.Text = folderDialog.FolderName;
-            }
-        }
 
         private void btnDstSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -76,7 +59,7 @@ namespace DXFactor
 
             if (folderDialog.ShowDialog() == true)
             {
-                tbDstFld.Text = folderDialog.FolderName;
+                // https://www.youtube.com/watch?v=V86kaIBBcRk&list=PLih2KERbY1HHOOJ2C6FOrVXIwg4AZ-hk1&index=7
             }
         }
     }
